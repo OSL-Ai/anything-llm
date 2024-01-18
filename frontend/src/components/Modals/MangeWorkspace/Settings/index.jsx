@@ -46,7 +46,7 @@ export default function WorkspaceSettings({ active, workspace, settings }) {
   const [hasChanges, setHasChanges] = useState(false);
   const defaults = recommendedSettings(settings?.LLMProvider);
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = useCallback(async (e) => {
     setSaving(true);
     e.preventDefault();
     const data = {};
@@ -63,7 +63,7 @@ export default function WorkspaceSettings({ active, workspace, settings }) {
     }
     setSaving(false);
     setHasChanges(false);
-  };
+  }, [workspace.slug]);
 
   const deleteWorkspace = async () => {
     if (
