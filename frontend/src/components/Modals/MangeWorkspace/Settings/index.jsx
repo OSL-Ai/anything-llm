@@ -10,22 +10,22 @@ import ChatModelPreference from "./ChatModelPreference";
 
 // Ensure that a type is correct before sending the body
 // to the backend.
-function castToType(key, value) {
-  const definitions = {
-    openAiTemp: {
-      cast: (value) => Number(value),
-    },
-    openAiHistory: {
-      cast: (value) => Number(value),
-    },
-    similarityThreshold: {
-      cast: (value) => parseFloat(value),
-    },
-    topN: {
-      cast: (value) => Number(value),
-    },
-  };
+const definitions = {
+  openAiTemp: {
+    cast: (value) => Number(value),
+  },
+  openAiHistory: {
+    cast: (value) => Number(value),
+  },
+  similarityThreshold: {
+    cast: (value) => parseFloat(value),
+  },
+  topN: {
+    cast: (value) => Number(value),
+  },
+};
 
+function castToType(key, value) {
   if (!definitions.hasOwnProperty(key)) return value;
   return definitions[key].cast(value);
 }
